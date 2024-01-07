@@ -12,13 +12,13 @@ import {notification} from "ant-design-vue";
 import qs from "qs";
 
 const info = ref({
-  company: "",
-  sender_name: "",
-  sender_phone: "",
-  sender_id: "",
-  receiver_name: "",
-  receiver_phone: "",
-  receiver_addr: "",
+  company: "aa",
+  sender_name: "bb",
+  sender_phone: "12312312312",
+  sender_id: "123123123412341234",
+  receiver_name: "aa",
+  receiver_phone: "12312312312",
+  receiver_addr: "//",
   object_type: 0, // 这个放勾选的list，返回一个index：0,1,2...给我
   object_weights: 1.0,
   parcel_insurance: false,
@@ -86,11 +86,12 @@ const uploadData = async function () {
 
   console.log(info.value)
   console.log(qs.stringify(info.value))
-  let res = await http.post('/info', qs.stringify(info.value))
-  if (res.status === 200){
+  await http.post('/info', info.value).then(async (res) => {
     console.log('uploaded')
-    await router.push(`/res/${res.status}`)
-  }
+    await router.push(`/res/${200}`)
+  }).catch((err)=>{
+    console.log(err)
+  })
 }
 
 //添加请求拦截器

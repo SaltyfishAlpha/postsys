@@ -16,10 +16,22 @@ export default defineConfig({
   server: {
     port: 5098,
     proxy: {
-      'api': {
-        target: 'http://localhost:9000',
+      '/api': {
+        target: 'http://localhost:1926',
         changeOrigin: true,
-        rewrite: path => path.replace(/^\/api/, '')
+        pathRewrite:{'^/api':''},
+        ws:true,
+      }
+    }
+  },
+  devServer: {
+    port: 5098,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:1926',
+        changeOrigin: true,
+        pathRewrite:{'^/api':''},
+        ws:true,
       }
     }
   }
