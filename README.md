@@ -4,7 +4,7 @@
 
 请修改`vite.config.js`中`proxy`的值,找到这个部分的代码
 
-```javascript
+```json
   server: {
     port: 5098,
     proxy: {
