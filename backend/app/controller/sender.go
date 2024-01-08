@@ -63,7 +63,7 @@ func UpdateInfos(c echo.Context) (err error) {
 		return response.SendResponse(c, 404, "query failed")
 	}
 	exp.Tracing_Num = data.Tracing_Num
-	err = model.DB.Debug().Where("tracing_num = ?", exp.Tracing_Num).Updates(&exp).Error
+	err = model.DB.Debug().Where("sender_id = ?", data.Sender_Id).Updates(&exp).Error
 	if err != nil {
 		logrus.Fatal(err)
 		return response.SendResponse(c, 404, "update err")
