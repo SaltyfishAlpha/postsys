@@ -40,3 +40,14 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### 后端部分
+cd到backend文件夹，请确保初始化了golang和mysql环境，安装好golang包依赖。
+后端默认运行在http://127.0.0.1:1926上，您可以在backend/app/init.go的StartServer函数中修改这一端口号。
+
+运行后端的方法为
+```bash
+cd backend && go run main.go 
+```
+
+
