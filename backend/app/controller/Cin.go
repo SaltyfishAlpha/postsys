@@ -39,10 +39,10 @@ func UploadExpress(c echo.Context) (err error) {
 
 // api/allocate
 func Allocate(c echo.Context) (err error) {
-	// query for shelf_num = "-1"
+	// query for "-1"
 	exp := new(model.Express_In)
-	exp.shelf_num = "-1"
-	err = model.DB.Where("shelf_num = ?", exp.shelf_num).First(&exp).Error
+	exp.Tracing_Num = "-1"
+	err = model.DB.Where("tracing_num = ?", exp.Tracing_Num).First(&exp).Error
 	if err != nil {
 		return response.SendResponse(c, 404, "find error")
 	}
@@ -65,7 +65,7 @@ func Allocated(c echo.Context) (err error) {
 		return response.SendResponse(c, 404, "find nothing")
 	}
 	exp.Shelf_Num = data.Shelf_Num
-	err = model.DB.Debug().Where("tracing_num = ?", exp.Tracing_Num).Updates(&exp).Error
+	err = model.DB.Debug().Updates(&exp).Error
 	if err != nil {
 		return response.SendResponse(c, 404, "shelf_num updating error")
 	}
