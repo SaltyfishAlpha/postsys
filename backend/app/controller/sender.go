@@ -45,7 +45,7 @@ func GetInfo(c echo.Context) (err error) {
 	if err != nil {
 		return response.SendResponse(c, 404, "found no express in repository")
 	}
-	return response.SendResponse(c, 200, "found")
+	return response.SendResponse(c, 200, "found", exp)
 }
 
 // api/updateinfo
