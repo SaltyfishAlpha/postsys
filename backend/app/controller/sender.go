@@ -40,6 +40,7 @@ func BeginSend(c echo.Context) (err error) {
 
 // api/getinfo
 func GetInfo(c echo.Context) (err error) {
+	// searching for tracing_num = "x"
 	exp := new(model.Senders)
 	err = model.DB.Debug().Where("tracing_num = ?", "x").First(&exp).Error
 	if err != nil {
