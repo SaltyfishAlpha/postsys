@@ -12,14 +12,14 @@ import {notification} from "ant-design-vue";
 import qs from "qs";
 
 const info = ref({
-  company: "aa",
-  sender_name: "bb",
-  sender_phone: "12312312312",
-  sender_id: "123123123412341234",
-  receiver_name: "aa",
-  receiver_phone: "12312312312",
-  receiver_addr: "//",
-  object_type: 0, // 这个放勾选的list，返回一个index：0,1,2...给我
+  company: "",
+  sender_name: "",
+  sender_phone: "",
+  sender_id: "",
+  receiver_name: "",
+  receiver_phone: "",
+  receiver_addr: "",
+  object_type: Number, // 这个放勾选的list，返回一个index：0,1,2...给我
   object_weights: 1.0,
   parcel_insurance: false,
   object_value: 0.0,
@@ -40,9 +40,10 @@ const fill_rec = (data) => {
   info.value.receiver_addr = data.address
 }
 const fill_info = (data) => {
-  // console.log(data)
-  info.value.object_weights = data.object_weights
-  info.value.object_type = data.object_type
+  console.log(data)
+  info.value.object_weights = Number(data.object_weights)
+  info.value.object_type = Number(data.object_type)
+  console.log(info.value)
 }
 
 function datacheck() {
