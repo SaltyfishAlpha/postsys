@@ -43,7 +43,8 @@ func PickUp (c echo.Context) (err error) {
 	if exp.Receiver_Phone != data.Receiver_Phone {
 		return response.SendResponse(c, 404, "Express not yours",)
 	}
-	err = model.DB.Debug().Delete(&exp).Error // .Where("tracing_num = ?", data.Tracing_Num)
+	// err = model.DB.Debug().Delete(&exp).Error // .Where("tracing_num = ?", data.Tracing_Num)
+	err = model.DB.Debug().Where("tracing_num = ?", data.Tracing_Num).Delete(&exp).Error
 	if err != nil {
 		logrus.Fatal(err)
 		return response.SendResponse(c, 404, "delete (pick up) error")
