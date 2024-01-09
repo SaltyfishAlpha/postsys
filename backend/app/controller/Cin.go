@@ -69,6 +69,9 @@ func Allocated(c echo.Context) (err error) {
 	if err != nil {
 		return response.SendResponse(c, 404, "shelf_num updating error")
 	}
+	// 分配货架后提醒收件人领取
+	Infof("Message: express arrived at %s shelf", exp.Shelf_Num)
+
 	return response.SendResponse(c, 200, "succeed")
 
 }
